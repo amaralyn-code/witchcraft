@@ -62,6 +62,7 @@ def main(screen):
     current_row = 0
     curses.init_pair(1, curses.COLOR_BLACK, curses.COLOR_WHITE)
     current_current_menu = []
+    global menu
     while True:
         current_menu = menus[menu]
         print_menu(screen, current_row, current_menu)
@@ -73,6 +74,8 @@ def main(screen):
             current_row +=1
         elif key == curses.KEY_ENTER or key in [10, 13]:
             run(current_row)
+        elif key == curses.KEY_LEFT:
+            menu -= 1
         if current_menu != current_current_menu:
             current_row = 0 
         screen.refresh()
